@@ -1,0 +1,5 @@
+编写pytorchtest.py输出pytorch和torchvision的版本号
+预测功能分离加载模型和预测
+device.py分离驱动测试代码和Command枚举的定义
+mysorted.py重命名为mutil_sort.py
+分离相机驱动获取图像的代码和分拣代码
