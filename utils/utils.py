@@ -31,6 +31,24 @@ def input_lable(input_data,lable_dic):
         else:
             return False
 
+def input_data(inputnum,inputlable,lable_dic):
+    while True:
+        n = 0
+        lables = []
+        num = input(inputnum)
+        if not is_int(num):
+            continue
+        else:
+            break
+    while n < int(num):
+        lable = input(inputlable + f'第{str(n+1)}个：')
+        if input_lable(lable, lable_dic):
+            n = n + 1
+            lables.append(lable)
+        else:
+            continue
+    return lables
+
 def read_lables(file='./lables.txt'):
     '''读取整个文件'''
     with open(file, encoding='UTF-8') as file_read:
