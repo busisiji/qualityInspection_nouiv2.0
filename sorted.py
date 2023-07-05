@@ -33,8 +33,6 @@ def work_run(data_img,model,image):
 	# temp = cv2.cvtColor(temp, cv2.COLOR_BGR2RGB)
 	# 2.模型预测
 	lable = model.modelpred(temp)
-	# 图像显示
-	image.addtext(lable, temp)
 	print("预测结果：", lable)
 	# 3.根据预测结果输出指令
 	# 如果上一个预测结果为空传送带，且这一个预测结果不是，则输出对应指令
@@ -44,6 +42,8 @@ def work_run(data_img,model,image):
 		if lable == lable_dic[last_lable]:
 			send_command(Command.sort_two)
 	pre_lable = lable
+	# 图像显示
+	image.addtext(lable, temp)
 
 def work_thread(camera,model):
 	'''为线程定义一个函数'''
@@ -107,11 +107,11 @@ if __name__ == "__main__":
 			break
 	while True:
 		last_lable = input("请输入第二个分拣位要分拣的标签索引：")
-		if input_lable(first_lable, lable_dic):
+		if input_lable(last_lable, lable_dic):
 			break
 	while True:
 		none_lable = input("请输入皮带上没有物体时的标签索引：")
-		if input_lable(first_lable, lable_dic):
+		if input_lable(none_lable, lable_dic):
 			break
 
 	# 3.加载模型
